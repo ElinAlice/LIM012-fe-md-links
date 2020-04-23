@@ -1,0 +1,20 @@
+{
+  "name": "md-links",
+  "version": "1.0.0",
+  "description": "Libreria para la validación de links de archivos markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElinAlice/LIM012-fe-md-links.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElinAlice/LIM012-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/ElinAlice/LIM012-fe-md-links#readme"
+}
