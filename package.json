@@ -1,20 +1,39 @@
 {
-  "name": "md-links",
+  "name": "@elinalice/md-links",
   "version": "1.0.0",
   "description": "Libreria para la validación de links de archivos markdown",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "build": "microbundle",
+    "prepublish": "npm run build",
+    "prebuild": "npm test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ElinAlice/LIM012-fe-md-links.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Nelida Alicia Alvarez Vargas (nelializ02@gmail.com)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ElinAlice/LIM012-fe-md-links/issues"
   },
-  "homepage": "https://github.com/ElinAlice/LIM012-fe-md-links#readme"
+  "homepage": "https://github.com/ElinAlice/LIM012-fe-md-links#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.5",
+    "babel-jest": "^25.4.0",
+    "husky": "^4.2.5",
+    "jest": "^25.4.0",
+    "lint-staged": "^10.1.7",
+    "microbundle": "^0.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  }
 }
