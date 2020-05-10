@@ -1,41 +1,20 @@
 const fetch = require('node-fetch');
 
-// eslint-disable-next-line no-unused-vars
-const validateLinks = (url) => new Promise((resolve, rejected) => {
-  fetch(url).then((res) => {
-    const validateLinkStatus = [];
-    const linkStatusData = {
-      status: res.status,
-      statusText: res.statusText,
-    };
-    validateLinkStatus.push(linkStatusData);
-    resolve(validateLinkStatus);
-  }).catch((error) => {
-    rejected(error);
+const validateLinks = (objectDataLink) => new Promise((resolve) => {
+  const linkStatusData = {
+    path: objectDataLink.path,
+    href: objectDataLink.href,
+    text: objectDataLink.text,
+  };
+  fetch(objectDataLink.href).then((res) => {
+    linkStatusData.status = res.status;
+    linkStatusData.statusText = res.statusText;
+    resolve(linkStatusData);
+  }).catch(() => {
+    linkStatusData.status = 418;
+    linkStatusData.statusText = 'ERROR';
+    resolve(linkStatusData);
   });
 });
 
-// let result = validateLinks('https://nodejs.org/dist/lest-v12.x/docs/api/')
-
-// result.then((result) => {
-//     console.log(result);
-// })
-// .catch((error) => {
-//     console.log(error);
-// })
-
-// let links = [
-//     'https://nodejs.org/dist/lest-v12.x/docs/api/',
-//     'https://www.google.com'
-// ]
-
-
-// links.forEach(element => {
-//     validateLinks(element)
-//     .then((result) => {
-//         console.log(result);
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     })
-// });
+module.exports.validateLinks = validateLinks;

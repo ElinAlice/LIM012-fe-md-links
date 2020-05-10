@@ -1,6 +1,7 @@
 const fs = require('fs');
 const pathModule = require('path');
 const { markdownLinkExtractor } = require('./markdownLinkExtractor.js');
+const { validateLinks } = require('./validateLink');
 
 const readFile = (path) => new Promise((resolve, rejected) => {
   fs.readFile(path, 'utf8', (error, data) => {
@@ -45,9 +46,21 @@ const accessTheFolder = (path) => new Promise((resolve, rejected) => {
   });
 });
 
-const mdLinks = (path) => {
+const linkValidationProcess = (linksObject) => new Promise((resolve, rejected) => {
+  const promisesValidate = [];
+  linksObject.forEach((element) => {
+    promisesValidate.push(validateLinks(element));
+  });
+  Promise.all(promisesValidate).then((result) => {
+    resolve(result);
+  }).catch((error) => {
+    rejected(error);
+  });
+});
+
+const mdLinks = (path, options = null) => {
   const pathAbsolute = pathModule.resolve(path);
-  return new Promise((resolve, rejected) => {
+  const promiseLinks = new Promise((resolve, rejected) => {
     fs.stat(pathAbsolute, (error, stats) => {
       if (error) {
         rejected(error);
@@ -58,12 +71,28 @@ const mdLinks = (path) => {
           rejected(err);
         });
       } else if (stats.isDirectory() === true) {
-        accessTheFolder(pathAbsolute).then((showFolder) => {
-          resolve(showFolder);
+        accessTheFolder(pathAbsolute).then((showLinkData) => {
+          resolve(showLinkData);
         }).catch((err) => {
           rejected(err);
         });
       }
+    });
+  });
+
+  return new Promise((resolve, rejected) => {
+    promiseLinks.then((linksDataObject) => {
+      if (options && options.validate === true) {
+        linkValidationProcess(linksDataObject).then((resultData) => {
+          resolve(resultData);
+        }).catch((err) => {
+          rejected(err);
+        });
+      } else {
+        resolve(linksDataObject);
+      }
+    }).catch((error) => {
+      rejected(error);
     });
   });
 };
