@@ -3,7 +3,9 @@ const pathModule = require('path');
 const { markdownLinkExtractor } = require('./markdownLinkExtractor.js');
 const { validateLinks } = require('./validateLink');
 
-const readFile = (path) => new Promise((resolve, rejected) => {
+const MDLinks = {};
+
+MDLinks.readFile = (path) => new Promise((resolve, rejected) => {
   fs.readFile(path, 'utf8', (error, data) => {
     if (error) {
       rejected(error);
@@ -14,7 +16,7 @@ const readFile = (path) => new Promise((resolve, rejected) => {
   });
 });
 
-const accessTheFolder = (path) => new Promise((resolve, rejected) => {
+MDLinks.accessTheFolder = (path) => new Promise((resolve, rejected) => {
   fs.readdir(path, (error, files) => {
     if (error) {
       rejected(error);
@@ -27,7 +29,7 @@ const accessTheFolder = (path) => new Promise((resolve, rejected) => {
             dir: path,
             base: element,
           });
-          const promiseFile = readFile(filePath);
+          const promiseFile = MDLinks.readFile(filePath);
           promisesFilesMd.push(promiseFile);
         }
       });
@@ -46,7 +48,7 @@ const accessTheFolder = (path) => new Promise((resolve, rejected) => {
   });
 });
 
-const linkValidationProcess = (linksObject) => new Promise((resolve, rejected) => {
+MDLinks.linkValidationProcess = (linksObject) => new Promise((resolve, rejected) => {
   const promisesValidate = [];
   linksObject.forEach((element) => {
     promisesValidate.push(validateLinks(element));
@@ -58,20 +60,20 @@ const linkValidationProcess = (linksObject) => new Promise((resolve, rejected) =
   });
 });
 
-const mdLinks = (path, options = null) => {
+MDLinks.mdLinks = (path, options = null) => {
   const pathAbsolute = pathModule.resolve(path);
   const promiseLinks = new Promise((resolve, rejected) => {
     fs.stat(pathAbsolute, (error, stats) => {
       if (error) {
         rejected(error);
       } else if (stats.isFile() === true) {
-        readFile(pathAbsolute).then((showLinkData) => {
+        MDLinks.readFile(pathAbsolute).then((showLinkData) => {
           resolve(showLinkData);
         }).catch((err) => {
           rejected(err);
         });
       } else if (stats.isDirectory() === true) {
-        accessTheFolder(pathAbsolute).then((showLinkData) => {
+        MDLinks.accessTheFolder(pathAbsolute).then((showLinkData) => {
           resolve(showLinkData);
         }).catch((err) => {
           rejected(err);
@@ -83,7 +85,7 @@ const mdLinks = (path, options = null) => {
   return new Promise((resolve, rejected) => {
     promiseLinks.then((linksDataObject) => {
       if (options && options.validate === true) {
-        linkValidationProcess(linksDataObject).then((resultData) => {
+        MDLinks.linkValidationProcess(linksDataObject).then((resultData) => {
           resolve(resultData);
         }).catch((err) => {
           rejected(err);
@@ -97,4 +99,4 @@ const mdLinks = (path, options = null) => {
   });
 };
 
-module.exports.mdLinks = mdLinks;
+export default MDLinks;
