@@ -2,10 +2,13 @@
   "name": "@elinalice/md-links",
   "version": "1.0.0",
   "description": "Libreria para la validación de links de archivos markdown",
-  "main": "dist/mdLinks.js",
+  "main": "src/mdLinks.js",
   "source": "src/mdLinks.js",
   "umd:main": "dist/mdLinks.umd.js",
   "module": "dist/mdLinks.mjs",
+  "bin": {
+    "md-links" : "src/cli.js"
+  },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
