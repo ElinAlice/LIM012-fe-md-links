@@ -1,6 +1,6 @@
 import markdownLinkExtractor from '../src/markdownLinkExtractor';
 import validateLinks from '../src/validateLink';
-import MDLinks from '../src/mdLinks';
+import { MDLinks } from '../src/mdLinks';
 
 const fileContent = `# Esto es solo la prueba del lectura de archivo.
 ![imagen1](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU)
@@ -37,7 +37,7 @@ describe('markdownLinkExtractor', () => {
       expect(typeof markdownLinkExtractor.markdownLinkExtractor).toBe('function');
     });
 
-    it('Deria retornar una array de objetos', () => {
+    it('Deria retornar una array de objetos con datos del link', () => {
       expect(markdownLinkExtractor.markdownLinkExtractor(fileContent, './prueba.md')).toEqual(arrayGetLinkData);
     });
   });
@@ -53,7 +53,7 @@ describe('validateLinks', () => {
       expect(typeof markdownLinkExtractor.markdownLinkExtractor).toBe('function');
     });
 
-    it('Deberia retornar un nuevo objeto agregando datos', () => expect(validateLinks.validateLinks(objectLink)).resolves.toStrictEqual({
+    it('Deberia retornar un nuevo objeto con datos del link agregando datos de validacion', () => expect(validateLinks.validateLinks(objectLink)).resolves.toStrictEqual({
       href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
       path: './prueba.md',
       status: 200,

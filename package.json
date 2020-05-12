@@ -2,10 +2,10 @@
   "name": "@elinalice/md-links",
   "version": "1.0.0",
   "description": "Libreria para la validación de links de archivos markdown",
-  "main": "dist/index.js",
-  "source": "src/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
+  "main": "dist/mdLinks.js",
+  "source": "src/mdLinks.js",
+  "umd:main": "dist/mdLinks.umd.js",
+  "module": "dist/mdLinks.mjs",
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
@@ -35,7 +35,7 @@
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
     "jest": "^25.4.0",
-    "microbundle": "^0.11.0",
+    "microbundle": "^0.12.0",
     "prettier": "^2.0.5"
   },
   "husky": {

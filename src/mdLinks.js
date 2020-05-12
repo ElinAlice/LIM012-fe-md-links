@@ -99,4 +99,4 @@ MDLinks.mdLinks = (path, options = null) => {
   });
 };
 
-export default MDLinks;
+module.exports.MDLinks = MDLinks;
