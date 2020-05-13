@@ -7,7 +7,7 @@
   "umd:main": "dist/mdLinks.umd.js",
   "module": "dist/mdLinks.mjs",
   "bin": {
-    "md-links" : "src/cli.js"
+    "md-links": "src/cli.js"
   },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
@@ -47,6 +47,7 @@
     }
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "marked": "^0.8.2",
     "node-fetch": "^2.6.0",
     "yargs": "^15.3.1"

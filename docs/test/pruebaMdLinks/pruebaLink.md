@@ -6,3 +6,5 @@
 
 Puede existir saltos de linea
 [LINK](https://rogerdudler.github.io/git-guide/index.es.html)
+[LINK dupicado](https://rogerdudler.github.io/git-guide/index.es.html)
+[LINK Roto](https://rodudler.github.io/git-guide/index.es.html)

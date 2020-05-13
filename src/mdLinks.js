@@ -10,8 +10,13 @@ MDLinks.readFile = (path) => new Promise((resolve, rejected) => {
     if (error) {
       rejected(error);
     } else {
-      const linksData = markdownLinkExtractor(data, path);
-      resolve(linksData);
+      const mdFile = pathModule.extname(path);
+      if (mdFile === '.md') {
+        const linksData = markdownLinkExtractor(data, path);
+        resolve(linksData);
+      } else {
+        rejected(new Error('ERROR: El archivo a evaluar no es de tipo markdown'));
+      }
     }
   });
 });
