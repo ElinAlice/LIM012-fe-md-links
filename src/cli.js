@@ -32,7 +32,7 @@ if (filePath) {
     } else if (stats) {
       const linkContainer = result.map((element) => element.href);
       const uniqueLink = new Set(linkContainer);
-      const showStats = ` Total : ${linkContainer.length} \n Unique: ${uniqueLink.size} `;
+      const showStats = ` ${colors.cyan(`Total : ${linkContainer.length}`)} \n ${colors.green(`Unique: ${uniqueLink.size}`)} `;
       console.log(showStats);
     } else {
       result.forEach((e) => {
