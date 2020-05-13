@@ -50,7 +50,9 @@ Por ejemplo:
 * Al pasar la opción `--status`, el output (salida) será un texto con estadísticas básicas sobre los links.
 Por ejemplo:
 
-
+`--status --validate`
+* También podemos pasar las dos opciones a la vez `--status --validate`, se obtendrá la estadística considerando la validación de los links.
+Por ejemplo:
 
 ## 4. Diagrama de flujo
 
