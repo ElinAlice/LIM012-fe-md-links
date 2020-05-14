@@ -52,6 +52,7 @@ Por ejemplo:
 ##### Options
 `--validate`
 * Al pasar la opción `--validate`, el módulo hara un petición HTTP y verficará si el link funciona o no. Por lo que nos imprimirá los links con sus respectivos datos agregando su estado y el texto del estado.
+
 Por ejemplo:
 
 
@@ -59,6 +60,7 @@ Por ejemplo:
 
 `--status`
 * Al pasar la opción `--status`, el output (salida) será un texto con estadísticas básicas sobre los links.
+
 Por ejemplo:
 
 
@@ -66,6 +68,7 @@ Por ejemplo:
 
 `--status --validate`
 * También podemos pasar las dos opciones a la vez `--status --validate`, se obtendrá la estadística considerando la validación de los links.
+
 Por ejemplo:
 
 
