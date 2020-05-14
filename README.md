@@ -43,23 +43,32 @@ Ejemplo:
 - Para poder hacer uso en el CLI (Command Line Interface), podemos ingresar la siguiente línea:
 `md-links <path-to-file> [options]`
 * El comportamiento de la librería por defecto solo identicará el archivo markdown e imprimirá los links que vaya encontrando.
+
 Por ejemplo:
+
+
 ![Datos-Obtenidos-Por-Defecto](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkCLI.PNG?raw=true)
 
 ##### Options
 `--validate`
 * Al pasar la opción `--validate`, el módulo hara un petición HTTP y verficará si el link funciona o no. Por lo que nos imprimirá los links con sus respectivos datos agregando su estado y el texto del estado.
 Por ejemplo:
+
+
 ![Datos-con-validate](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkValidate.PNG?raw=true)
 
 `--status`
 * Al pasar la opción `--status`, el output (salida) será un texto con estadísticas básicas sobre los links.
 Por ejemplo:
+
+
 ![Datos-con-status](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkStatus.PNG?raw=true)
 
 `--status --validate`
 * También podemos pasar las dos opciones a la vez `--status --validate`, se obtendrá la estadística considerando la validación de los links.
 Por ejemplo:
+
+
 ![Datos-con-status-validate](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkStatusValidate.PNG?raw=true)
 
 ## 4. Diagrama de flujo :twisted_rightwards_arrows:
