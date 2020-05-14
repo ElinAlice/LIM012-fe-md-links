@@ -1,13 +1,18 @@
-# MD-LINKS
+# :books: :link:  MD-LINKS :link: :books:
 
-## 1. Indice
-## 2. Descripción
+## Indice
+* [1. Descripción](#1-descripción)
+* [2. Instalación](#2-instalación)
+* [3. Uso](#3-uso)
+* [4. Diagrama de flujo](#4-diagrama-de-flujo)
+
+## 1. Descripción :book:
   `mdlinks` es una librería que lee y analiza los links que contiene los archivos en formato md, para verificar sus estados, generando un resultado de estadítica y a detalle de cada link.
-## 3. Instalación
+## 2. Instalación :heavy_check_mark:
 Podemos instalar la librería de la siguiente forma:
 
 `npm install ElinAlice/LIM012-fe-md-links`
-## 4. Uso
+## 3. Uso :pencil:
 ### API javascript
 - Para poder hacer uso en la API es importando la librería. Al invocar la función, se puede enviar de dos maneras, la primera manera enviamos solo un parámetro `(path-to-file)`, y la segunda manera es enviando dos parámetros `(path-to-file, { validate : true })`.
 Ejemplo:
@@ -39,22 +44,25 @@ Ejemplo:
 `md-links <path-to-file> [options]`
 * El comportamiento de la librería por defecto solo identicará el archivo markdown e imprimirá los links que vaya encontrando.
 Por ejemplo:
-[Datos-Obtenidos-Por-Defecto]()
+![Datos-Obtenidos-Por-Defecto](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkCLI.PNG?raw=true)
 
 ##### Options
 `--validate`
 * Al pasar la opción `--validate`, el módulo hara un petición HTTP y verficará si el link funciona o no. Por lo que nos imprimirá los links con sus respectivos datos agregando su estado y el texto del estado.
 Por ejemplo:
+![Datos-con-validate](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkValidate.PNG?raw=true)
 
 `--status`
 * Al pasar la opción `--status`, el output (salida) será un texto con estadísticas básicas sobre los links.
 Por ejemplo:
+![Datos-con-status](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkStatus.PNG?raw=true)
 
 `--status --validate`
 * También podemos pasar las dos opciones a la vez `--status --validate`, se obtendrá la estadística considerando la validación de los links.
 Por ejemplo:
+![Datos-con-status-validate](https://github.com/ElinAlice/LIM012-fe-md-links/blob/master/docs/img/mdLinkStatusValidate.PNG?raw=true)
 
-## 4. Diagrama de flujo
+## 4. Diagrama de flujo :twisted_rightwards_arrows:
 
 ### API JAVASCRIPT
 
