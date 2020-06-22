@@ -12,7 +12,8 @@
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
-    "test": "jest --verbose --coverage",
+    "test": "jest",
+    "test:coverage": "jest --verbose --coverage",
     "build": "microbundle",
     "prepublish": "npm run build",
     "prebuild": "npm test"
