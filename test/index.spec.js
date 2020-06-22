@@ -92,21 +92,26 @@ describe('MDLinks', () => {
     it('is a function', () => {
       expect(typeof MDLinks.accessTheFolder).toBe('function');
     });
-    it('Deberia retornar un objeto con los datos del link extraido', () => expect(MDLinks.accessTheFolder('./docs/test/pruebaBasicaTest'))
-      .resolves.toStrictEqual(
-        [
-          {
-            href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
-            path: './docs/test/pruebaBasicaTest\\prueba.md',
-            text: 'imagen1',
-          },
-          {
-            href: 'https://rogerdudler.github.io/git-guide/index.es.html',
-            path: './docs/test/pruebaBasicaTest\\prueba.md',
-            text: 'LINK',
-          },
-        ],
-      ));
+    it('Deberia retornar un objeto con los datos del link extraido', () => MDLinks.accessTheFolder('./docs/test/pruebaBasicaTest')
+      .then((data) => {
+        const dataTransform = data.map((object) => ({
+          href: object.href,
+          text: object.text,
+        }));
+
+        expect(dataTransform).toStrictEqual(
+          [
+            {
+              href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
+              text: 'imagen1',
+            },
+            {
+              href: 'https://rogerdudler.github.io/git-guide/index.es.html',
+              text: 'LINK',
+            },
+          ],
+        );
+      }));
   });
 
   describe('linkValidationProcess', () => {
@@ -136,41 +141,53 @@ describe('MDLinks', () => {
       expect(typeof MDLinks.mdLinks).toBe('function');
     });
 
-    it('Deberia retornar un objeto con los datos básicos del link, ruta de archivo', () => expect(MDLinks.mdLinks('./docs/test/pruebaBasicaTest/prueba.md'))
-      .resolves.toStrictEqual(
-        [
-          {
-            href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
-            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
-            text: 'imagen1',
-          },
-          {
-            href: 'https://rogerdudler.github.io/git-guide/index.es.html',
-            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
-            text: 'LINK',
-          },
-        ],
-      ));
+    it('Deberia retornar un objeto con los datos básicos del link, ruta de archivo', () => MDLinks.mdLinks('./docs/test/pruebaBasicaTest/prueba.md')
+      .then((data) => {
+        const dataTransform = data.map((object) => ({
+          href: object.href,
+          text: object.text,
+        }));
 
-    it('Deberia retornar un array de objetos, con datos de los links, con la opcion VALIDATE = TRUE;  cuando se pasa una carpeta', () => expect(MDLinks.mdLinks('./docs/test/pruebaBasicaTest', { validate: true }))
-      .resolves.toStrictEqual(
-        [
-          {
-            href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
-            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
-            status: 200,
-            statusText: 'OK',
-            text: 'imagen1',
-          },
-          {
-            href: 'https://rogerdudler.github.io/git-guide/index.es.html',
-            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
-            status: 200,
-            statusText: 'OK',
-            text: 'LINK',
-          },
-        ],
-      ));
+        expect(dataTransform).toStrictEqual(
+          [
+            {
+              href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
+              text: 'imagen1',
+            },
+            {
+              href: 'https://rogerdudler.github.io/git-guide/index.es.html',
+              text: 'LINK',
+            },
+          ],
+        );
+      }));
+
+    it('Deberia retornar un array de objetos, con datos de los links, con la opcion VALIDATE = TRUE;  cuando se pasa una carpeta', () => MDLinks.mdLinks('./docs/test/pruebaBasicaTest', { validate: true })
+      .then((data) => {
+        const dataTransform = data.map((object) => ({
+          href: object.href,
+          status: object.status,
+          statusText: object.statusText,
+          text: object.text,
+        }));
+
+        expect(dataTransform).toStrictEqual(
+          [
+            {
+              href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
+              status: 200,
+              statusText: 'OK',
+              text: 'imagen1',
+            },
+            {
+              href: 'https://rogerdudler.github.io/git-guide/index.es.html',
+              status: 200,
+              statusText: 'OK',
+              text: 'LINK',
+            },
+          ],
+        );
+      }));
 
     it('Debería devolver el código de error "ENOENT" cuando no existe el archivo', () => (MDLinks.mdLinks('./docs/test/pruebaBasicaTest'))
       .catch((e) => expect(e.code).toStrictEqual('ENOENT')));
