@@ -141,12 +141,12 @@ describe('MDLinks', () => {
         [
           {
             href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
-            path: 'C:\\Users\\Neli\\Desktop\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
+            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
             text: 'imagen1',
           },
           {
             href: 'https://rogerdudler.github.io/git-guide/index.es.html',
-            path: 'C:\\Users\\Neli\\Desktop\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
+            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
             text: 'LINK',
           },
         ],
@@ -157,14 +157,14 @@ describe('MDLinks', () => {
         [
           {
             href: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-LeAj-rGcmVe0nxDnmIBBkJiuBynxyAACSvArUcrNg1F1zCWR&usqp=CAU',
-            path: 'C:\\Users\\Neli\\Desktop\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
+            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
             status: 200,
             statusText: 'OK',
             text: 'imagen1',
           },
           {
             href: 'https://rogerdudler.github.io/git-guide/index.es.html',
-            path: 'C:\\Users\\Neli\\Desktop\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
+            path: 'F:\\Laboratoria\\Proyectos\\LIM012-fe-md-links\\docs\\test\\pruebaBasicaTest\\prueba.md',
             status: 200,
             statusText: 'OK',
             text: 'LINK',
